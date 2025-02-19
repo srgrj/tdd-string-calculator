@@ -1,2 +1,4 @@
 def add(numbers: str) -> int:
-    return int(numbers) if numbers else 0
+    if numbers:
+        return sum(map(int, numbers.split(',')))
+    return 0
