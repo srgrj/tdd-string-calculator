@@ -22,3 +22,6 @@ def test_multiple_numbers():
 def test_custom_delimiter():
     string_calculator.register_delimiter("\n")
     assert string_calculator.add("1\n2,3") == 6
+
+def test_delimiter_changing_input():
+    assert string_calculator.add("//;\n1;2") == 3
