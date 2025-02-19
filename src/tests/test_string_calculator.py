@@ -1,3 +1,5 @@
+import pytest
+
 from src.string_calculator import StringCalculator
 
 string_calculator = StringCalculator()
@@ -23,5 +25,13 @@ def test_custom_delimiter():
     string_calculator.register_delimiter("\n")
     assert string_calculator.add("1\n2,3") == 6
 
+
 def test_delimiter_changing_input():
     assert string_calculator.add("//;\n1;2") == 3
+
+
+def test_negative_numbers():
+    with pytest.raises(ValueError, match="Found negative numbers: -2"):
+        string_calculator.add("1,-2")
+    with pytest.raises(ValueError, match="Found negative numbers: -2,-3,-4"):
+        string_calculator.add("1,-2,-3,-4")
